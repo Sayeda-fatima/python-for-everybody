@@ -8,11 +8,10 @@ fh = open(fname)
 lst = list()
 for line in fh:
     line=line.rstrip()
-    word=line.split()
-    lst.append(word)
-    
-#lst.sort() 
-flat=[x for temp in lst for x in temp]
-flat.sort()
-y=list(dict.fromkeys(flat))
-print(y)    
+    words=line.split()
+    for word in words:
+        if word not in lst:
+            lst.append(word)
+
+lst.sort()
+print(lst)    
