@@ -12,12 +12,8 @@ fh = open(fname)
 count = 0
 for line in fh:
     line=line.rstrip()
-    wds=line.split()
-    if line == '':
-        continue
-    if wds[0]!='From':
-        continue
-    print(wds[1])
-    count+=1
-
+    if line.startswith("From") and not line.startswith("From:"):
+        count+=1
+        words=line.split()
+        print(words[1])
 print("There were", count, "lines in the file with From as the first word")
